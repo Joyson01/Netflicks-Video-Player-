@@ -34,8 +34,6 @@ This application is a custom video player integrated with Netflix-like profiles 
 
 ## Authors
 - **Joyson Vadlya**
-  - Roll No: 62
 - **Shrisankhya Purandare**
-  - Roll No: 30
-
+© 2024 (J.A.VA) Joyson Vadlya . All rights reserved.
 ---
