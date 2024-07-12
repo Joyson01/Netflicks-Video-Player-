@@ -1,7 +1,6 @@
 ---
 
 # Netflicks - Video Player   
-# © 2024 (J.A.VA) Joyson Vadlya . All rights reserved.
 
 ## Description
 This application is a custom video player integrated with Netflix-like profiles and menu navigation, built using Python and Tkinter.
@@ -36,4 +35,6 @@ This application is a custom video player integrated with Netflix-like profiles 
 ## Authors
 - **Joyson Vadlya**
 - **Shrisankhya Purandare**
+
+## © 2024 (J.A.VA) Joyson Vadlya . All rights reserved.
 ---
