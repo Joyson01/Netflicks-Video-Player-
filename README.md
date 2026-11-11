@@ -25,6 +25,22 @@ This application is a custom video player integrated with Netflix-like profiles 
    pip install pillow python-vlc
    ```
 
+## Run locally
+
+After installing the dependencies above, run from the repository folder:
+
+```bash
+python main.py
+```
+
+Keep `Images/` and `Audio/` beside `main.py`; the application loads them using relative paths. VLC must be installed separately from the `python-vlc` Python package.
+
+## Platform and project scope
+
+The embedded player calls VLC's Windows-specific `set_hwnd` method, and the interface uses an ICO window icon. Linux and macOS support would require platform-specific changes.
+
+This is a local video-player project with a Netflix-inspired interface. Playback uses the files in `Audio/`; profile-management links open Netflix in the browser rather than implementing account authentication or streaming in this application.
+
 ## Libraries Used
 - Tkinter
 - Webbrowser
