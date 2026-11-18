@@ -2,7 +2,7 @@
 
 A Netflix-inspired web app with real playback of openly licensed Blender films. No sign-in, uploads, or visitor tracking.
 
-**[Watch NetFlex online](https://netflex-joyson.splendidcloak.chatgpt.site)** · **[Web app source and setup](web/README.md)**
+**[Watch NetFlex online](https://netflex.joyson01.me)** · **[Web app source and setup](web/README.md)**
 
 ![NetFlex web app](docs/netflex-web.jpg)
 

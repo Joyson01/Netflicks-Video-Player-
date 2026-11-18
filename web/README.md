@@ -38,6 +38,6 @@ Browser QA: Spring playback, seeking, resume after reload, watchlist persistence
 
 ## Hosting
 
-The entire `dist/` directory works on a static HTTPS host. The live site is hosted separately on Sites: https://netflex-joyson.splendidcloak.chatgpt.site. This `web/` folder is a portable copy; the local Sites checkout retains its hosting configuration. Pushing this GitHub repository does not automatically deploy changes to Sites.
+GitHub Pages publishes `web/dist/` at https://netflex.joyson01.me. The deployment workflow runs when files in `web/dist/` change on `main`. The same directory can be served by any static HTTPS host.
 
 The app stores no visitor reports. Google Fonts supplies the typefaces; the hosting provider, fonts provider and Blender servers receive normal network requests. Browser storage is per origin and device: preview and production have independent watchlists, and clearing site data resets them.
