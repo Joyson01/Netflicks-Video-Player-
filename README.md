@@ -1,3 +1,44 @@
+# NetFlex — web cinema
+
+A Netflix-inspired web app with real playback of openly licensed Blender films. No sign-in, uploads, or visitor tracking.
+
+**[Watch NetFlex online](https://netflex-joyson.splendidcloak.chatgpt.site)** · **[Web app source and setup](web/README.md)**
+
+![NetFlex web app](docs/netflex-web.jpg)
+
+## Web app
+
+- Ten openly licensed films with creator credits and licence links.
+- Search, genre filters, film details, and mobile-friendly browsing.
+- My List and Continue Watching saved in the visitor's browser.
+- Fullscreen playback, quality selection, seeking, and resume controls.
+- No backend, database, account, or API key required.
+
+### Run locally
+
+From the repository root:
+
+```sh
+python3 -m http.server 4187 --bind 127.0.0.1 --directory web/dist
+```
+
+Open http://127.0.0.1:4187. Use HTTP rather than opening the HTML file directly.
+
+### Verify
+
+Requires Node.js 18 or newer:
+
+```sh
+node --check web/dist/app.mjs
+node --test web/tests/*.test.mjs
+```
+
+Films stream from Blender's servers. Availability depends on the source provider and your connection. Browser storage is specific to each device and site address; clearing it removes saved lists and progress. The app is independent of Netflix and Blender.
+
+## Original desktop project
+
+The original Python/Tkinter/VLC application and its assets remain in `main.py`, `Images/`, and `Audio/`. Its original documentation follows.
+
 ---
 
 # Netflicks - Video Player   

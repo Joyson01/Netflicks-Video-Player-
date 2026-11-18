@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createLibrary, filterFilms, resumeTime} from '../dist/state.mjs';
+const films=[{id:'spring',title:'Spring',genres:['Fantasy','Animation'],description:'A girl and her dog',year:2019},{id:'charge',title:'Charge',genres:['Sci-Fi'],description:'A battery factory',year:2022}];
+const memory=()=>{const m=new Map();return {getItem:k=>m.get(k)??null,setItem:(k,v)=>m.set(k,v)}};
+test('watchlist persists across visits and toggles without duplicates',()=>{const s=memory();let l=createLibrary(s,films);l.toggle('spring');assert.equal(createLibrary(s,films).has('spring'),true);l.toggle('spring');assert.equal(createLibrary(s,films).has('spring'),false)});
+test('malformed storage and unknown films cannot break browsing',()=>{const s=memory();s.setItem('netflex:v1','{"list":["gone"],"progress":{"spring":{"time":"oops"}}}');const l=createLibrary(s,films);assert.deepEqual(l.list(),[]);assert.deepEqual(l.continueWatching(),[]);s.setItem('netflex:v1','{broken');assert.doesNotThrow(()=>createLibrary(s,films))});
+test('resume survives reload and completed films leave continue watching',()=>{const s=memory();const l=createLibrary(s,films);l.record('spring',120,464);assert.equal(createLibrary(s,films).progress('spring').time,120);assert.deepEqual(l.continueWatching().map(x=>x.id),['spring']);l.record('spring',463,464);assert.deepEqual(l.continueWatching(),[]);assert.equal(resumeTime(l.progress('spring')),0)});
+test('unavailable storage still allows a session watchlist',()=>{const l=createLibrary({getItem(){throw Error()},setItem(){throw Error()}},films);l.toggle('charge');assert.equal(l.has('charge'),true);assert.equal(l.persistent,false)});
+test('search combines genre and case-insensitive trimmed text',()=>{assert.deepEqual(filterFilms(films,'  GIRL ','Fantasy').map(x=>x.id),['spring']);assert.deepEqual(filterFilms(films,'spring','Sci-Fi'),[]);assert.equal(filterFilms(films,'','All').length,2)});
